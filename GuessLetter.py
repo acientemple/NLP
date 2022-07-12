@@ -1,7 +1,6 @@
 import nltk
 import random
 import  time
-import re
 words=nltk.corpus.words.words()
 number=random.randint(97,122)
 print('猜一个a-z的小写字母：')

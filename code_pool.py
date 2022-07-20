@@ -39,6 +39,7 @@ raw=response.read().decode('utf8')
 soup=BeautifulSoup(''.join(raw),'html.parser')
 
 
+'''exel表格操作'''
 import xlrd
 def readExcelDataByName(fileName, sheetName):
     table = None
@@ -90,84 +91,30 @@ def mix(m=100,n=20,s=sign[random.randint(0, 3)]):              #100题20以内�
             print('\n',file=f)
             print('\n')
 
-def add_sub(m=100,n=20):              #100题20以内加减法
-    mix(m,n,s=sign[random.randint(0, 1)])
 
 
-def mul_div(m=100,n=20):              #100题20以内乘除法
-    count = 0
-    while(count<m):
-        num1=random.randint(1,n)
-        num2=random.randint(1,n)
-        num3=random.randint(2,3)
-        s=sign[num3]
-        if num3==3 and num1%num2!=0:
-            continue
-        else:
-             count += 1
-             print('{0:<3}{1:^3}{2:<3}  = '.format(num1,s,num2),end='      ',file=f)
-             print('{0:<3}{1:^3}{2:<3}  = '.format(num1, s, num2), end='      ')
-        if(not count%5):
-            print('\n',file=f)
-            print('\n')
 
-def add(m=100,n=20):#100题20以内加法
-    count = 0
-    while (count < m):
-        num1 = random.randint(1, n)
-        num2 = random.randint(1, n)
-        s='+'
-        count += 1
-        print('{0:<3}{1:^3}{2:<3}  = '.format(num1,s,num2), end='      ',file=f)
-        print('{0:<3}{1:^3}{2:<3}  = '.format(num1, s, num2), end='      ')
-        if (not count % 5):
-            print('\n',file=f)
-            print('\n')
+'''模拟进度条'''
+import time
+def progress(percent, symbol='█', width=80):
+    if percent > 1:     # 超过 100% 的时候让其停在 1
+        percent = 1     # 可以避免进度条溢出
+    show_progress = ("▌%%-%ds▌" % width) % (int(percent * width) * symbol)
+    print("\r%s %.2f%%" % (show_progress, percent * 100), end='')
+def plan():
+    data_size = 1025  # 传输数据
+    recv_size = 0  # 初始值为0
+    while recv_size < data_size:
+        time.sleep(0.5)  # 模拟数据的传输延迟
+        recv_size += 150  # 每次收150
+        percent = recv_size / data_size  # 接收的比例
+        progress(percent, width=80)  # 进度条的宽度40
+plan()
 
+'''模拟进度条██████████████████████████████'''
+import sys,time
+for i in range(30):
+    sys.stdout.write("█")
+    time.sleep(0.1)
+    sys.stdout.flush()  # 刷新显示到屏幕
 
-def sub(m=100,n=20):#100题20以内减法
-    count = 0
-    while (count < m):
-        num1 = random.randint(1, n)
-        num2 = random.randint(1, n)
-        s='-'
-        if num1 < num2:
-            continue
-        else:
-            count += 1
-            print('{0:<3}{1:^3}{2:<3}  = '.format(num1,s,num2), end='      ',file=f)
-            print('{0:<3}{1:^3}{2:<3}  = '.format(num1, s, num2), end='      ')
-        if (not count % 5):
-            print('\n',file=f)
-            print('\n')
-
-
-def mul(m=100,n=10):#100题20以内乘法
-    count = 0
-    while (count < m):
-        num1 = random.randint(1, n)
-        num2 = random.randint(1, n)
-        s='×'
-        count += 1
-        print('{0:<3}{1:^3}{2:<3}  = '.format(num1,s,num2), end='      ',file=f)
-        print('{0:<3}{1:^3}{2:<3}  = '.format(num1, s, num2), end='      ')
-        if (not count % 5):
-            print('\n',file=f)
-            print('\n')
-
-
-def div(m=100,n=20):              #100题20以内除法
-    count = 0
-    while(count<m):
-        num1=random.randint(1,n)
-        num2=random.randint(1,n)
-        s='÷'
-        if num1%num2!=0:
-            continue
-        else:
-             count += 1
-             print('{0:<3}{1:^3}{2:<3}  = '.format(num1,s,num2),end='      ',file=f)
-             print('{0:<3}{1:^3}{2:<3}  = '.format(num1, s, num2), end='      ')
-        if(not count%5):
-            print('\n',file=f)
-            print('\n')

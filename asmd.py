@@ -1,48 +1,60 @@
 '''随机出题，加减乘除'''
-# f=open('calcu.txt','w')
+f=open('calcu.txt','w')
 
 
-class Mix:              #100题20以内加减乘除
+class Mix:
+    '''__m（默认50）题n（默认100）以内加减乘除'''
     import random
-    sign = ['+', '-', '×', '÷']
-    def __init__(self,m,n):
-        self.m=m
-        self.n=n
+    def __init__(self,m=50,n=100):
+        self.__m=m
+        self.__n=n
+    def get_m(self):
+        return (self.__m)
+    def get_n(self):
+        return (self.__n)
+    def set_m(self,score):
+        self.__m=score
+    def set_n(self,score):
+        self.__n=score
 
-    def all(self):
+    def __str__(self):
+        return f'{self.__m}题{self.__n}以内加减乘除'
+
+    __repr__=__str__    @property
+    def all(self,sign = ['+', '-', '×', '÷']):
         count = 0
-        while(count<self.m):
-            num1 = self.random.randint(1,self.n)
-            num2 = self.random.randint(1, self.n)
-            num3 = self.random.randint(0, len(self.sign)-1)
-            s = self.sign[num3]
-            if num3==3 and num1%num2!=0:
+        while(count<self.__m):
+            num1 = self.random.randint(1,self.__n)
+            num2 = self.random.randint(1, self.__n)
+            num3 = self.random.randint(0, len(sign)-1)
+            s = sign[num3]
+            if s=='÷' and num1%num2!=0:
                 continue
-            elif num3==1 and num1 < num2:
+            elif s=='-' and num1 < num2:
                 continue
             else:
                  count += 1
-                 print('{0:<3}{1:^3}{2:<3}  = '.format(num1, s, num2), end='\t')
-                 # print('{0:<3}{1:^3}{2:<3}  = '.format(num1,s,num2),end='\t',file=f)
+                 print('{0:<4d}{1:^3s}{2:<4d}  = '.format(num1, s, num2), end='\t\t')
+                 print('{0:<4d}{1:^3s}{2:<4d}  = '.format(num1,s,num2),end='\t\t',file=f)
             if(not count%5):
                 print('\n')
-                # print('\n', file=f)
+                print('\n', file=f)
 
-class Add(Mix):
-    sign=['+']
+    def add(self):
+        self.all(sign=['+'])
 
-class Sub(Mix):
-    sign = ['-']
+    def sub(self):
+        self.all(sign = ['-'])
 
-class Mul(Mix):
-    sign=['×']
+    def mul(self):
+        self.all(sign=['×'])
 
-class Div(Mix):
-    sign = ['÷']
+    def div(self):
+        self.all(sign = ['÷'])
 
-class Add_sub(Mix):
-    sign = ['+', '-']
+    def add_sub(self):
+        self.all(sign = ['+', '-'])
 
-class Mul_div(Mix):
-    sign = ['×', '÷']
+    def mul_div(self):
+        self.all(sign = ['×', '÷'])
 

@@ -20,7 +20,8 @@ class Mix:
     def __str__(self):
         return f'{self.__m}题{self.__n}以内加减乘除'
 
-    __repr__=__str__    @property
+    __repr__=__str__
+
     def all(self,sign = ['+', '-', '×', '÷']):
         count = 0
         while(count<self.__m):

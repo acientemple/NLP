@@ -1,10 +1,10 @@
-
-import nltk
+from nltk.book import *
 pyhis=''
-for line in open('C:\\Users\\Lenovo\\PycharmProjects\\NLP\\text.txt'):
+for line in open('C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python37-32\\python.txt'):
     pyhis=pyhis+line
 print(pyhis)
-pyhis_words=nltk.word_tokenize(pyhis)
-pyhis_words=nltk.FreqDist(pyhis_words)
-print(pyhis_words.most_common())
-
+pyhis_words=FreqDist(pyhis)
+for key in pyhis_words.keys():
+    print(key),
+    print(pyhis_words[key])
+    

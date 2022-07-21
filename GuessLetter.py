@@ -16,14 +16,13 @@ print('该字母在%s这个词中！' % words_hint(number))
 while running==1:
    count+=1
    inword=input("请输入一个你猜的字母:")
-   if len(inword)==1 and inword.isalpha():
+   if len(inword)==1 and inword.isaplpha():
        words_hint(number)
        print('该字母也在%s这个词中！' % words_hint(number))
        if ord(inword) == number:
-            if count == 1:
+           if count == 1:
                print('祝贺你，第一次就猜对了！')
-               running = 0
-            else:
+           else:
                print("祝贺你, 你猜对了!")
                print("结束.")
                running = 0

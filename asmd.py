@@ -1,67 +1,69 @@
-"""随机出题，加减乘除"""
+"""随机出题，加减乘除（默认60题100以内自然数）"""
 import random
+
+__sign = []
+m = 60  # 默认60题
+n = 100  # 默认100以内
 
 f = open('calculation.txt', 'w')
 
 
-class Mix:
-    """__m（默认50）题n（默认100）以内加减乘除"""
-    import random
-    def __init__(self, m=60, n=100):
-        self.m = m
-        self.n = n
+def __all():
+    count = 0
+    while count < m:
+        num1 = random.randint(1, n)
+        num2 = random.randint(1, n)
+        s = random.choice(__sign)
+        if s == '÷' and num1 % num2 != 0:
+            continue
+        elif s == '-' and num1 < num2:
+            continue
+        else:
+            count += 1
+            print('{0:^4d}{1:^3s}{2:^4d}  = '.format(num1, s, num2), end='\t')
+            print('{0:^4d}{1:^3s}{2:^4d}  = '.format(num1, s, num2), end='\t', file=f)
+            if not count % 4:
+                print('\n')
+                print('\n', file=f)
 
-    # def get_m(self):
-    #     return self.m
-    #
-    # def get_n(self):
-    #     return self.n
-    #
-    # def set_m(self, score):
-    #     self.m = score
-    #
-    # def set_n(self, score):
-    #     self.n = score
 
-    def __str__(self):
-        return f'{self.m}题{self.n}以内加减乘除'
+def add():
+    global __sign
+    __sign = ['+']
+    __all()
 
-    __repr__ = __str__
 
-    def all(self, sign=None):
-        if sign is None:
-            sign = ['+', '-', '×', '÷']
-        count = 0
-        while count < self.m:
-            num1 = self.random.randint(1, self.n)
-            num2 = self.random.randint(1, self.n)
-            s = random.choice(sign)
-            if s == '÷' and num1 % num2 != 0:
-                continue
-            elif s == '-' and num1 < num2:
-                continue
-            else:
-                count += 1
-                print('{0:^4d}{1:^3s}{2:^4d}  = '.format(num1, s, num2), end='\t')
-                print('{0:^4d}{1:^3s}{2:^4d}  = '.format(num1, s, num2), end='\t', file=f)
-                if not count % 4:
-                    print('\n')
-                    print('\n', file=f)
+def sub():
+    global __sign
+    __sign = ['-']
+    __all()
 
-    def add(self):
-        self.all(sign=['+'])
 
-    def sub(self):
-        self.all(sign=['-'])
+def mul():
+    global __sign
+    __sign = ['×']
+    __all()
 
-    def mul(self):
-        self.all(sign=['×'])
 
-    def div(self):
-        self.all(sign=['÷'])
+def div():
+    global __sign
+    __sign = ['÷']
+    __all()
 
-    def add_sub(self):
-        self.all(sign=['+', '-'])
 
-    def mul_div(self):
-        self.all(sign=['×', '÷'])
+def add_sub():
+    global __sign
+    __sign = ['+', '-']
+    __all()
+
+
+def mul_div():
+    global __sign
+    __sign = ['×', '÷']
+    __all()
+
+
+def mix():
+    global __sign
+    __sign = ['+', '-', '×', '÷']
+    return __all()

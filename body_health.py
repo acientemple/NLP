@@ -10,10 +10,10 @@ s2=height*height/10000*25
 bmi=weight/(height*height/10000)
 
 if bmi<18.5:
-    print('过轻! 您需要增重%.2f--%.2f公斤。'%(s1-weight,s2-weight))
+    print('过轻! 您至少需要增重%.2f公斤。'%(s1-weight))
 elif bmi<25:
-    print('正常')
+    print('恭喜你，体重正常，继续保持！')
 elif bmi<32:
-	print('肥胖! 您需要减肥%.2f--%.2f公斤。'%(weight-s2,weight-s1))
+	print('肥胖! 您至少需要减肥%.2f公斤。'%(weight-s2))
 else:
 	print('过分了! 您需要减肥%.2f--%.2f公斤。'%(weight-s2,weight-s1))

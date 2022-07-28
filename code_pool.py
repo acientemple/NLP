@@ -141,7 +141,6 @@ def sub(m=100,n=20):#100题20以内减法
             print('\n',file=f)
             print('\n')
 
-
 def mul(m=100,n=10):#100题20以内乘法
     count = 0
     while (count < m):
@@ -171,3 +170,11 @@ def div(m=100,n=20):              #100题20以内除法
         if(not count%5):
             print('\n',file=f)
             print('\n')
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+x=np.arange(0,10,0.1)
+y=np.sin(x)
+plt.plot(x,y)
+

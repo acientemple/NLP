@@ -1,0 +1,23 @@
+import random
+
+# 生成四则运算题目
+def generate_question():
+    operators = ['+', '-', '*', '/']
+    operator = random.choice(operators)
+    if operator == '/':
+        num1 = random.randint(1, 100)
+        num2 = random.randint(1, 10)
+        num1, num2 = max(num1, num2), min(num1, num2)
+        num3 = num1 * num2
+    else:
+        num1 = random.randint(1, 1000)
+        num2 = random.randint(1, 1000)
+        num3 = random.randint(1, 1000)
+    return f"{num1} {operator} {num2} {operator} {num3} =  \t"
+
+# 生成60道四则运算题目
+questions = [generate_question() for _ in range(60)]
+
+# 输出到控制台
+for i in range(0, 60, 3):
+    print(questions[i], questions[i+1], questions[i+2])

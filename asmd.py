@@ -2,13 +2,10 @@
 import random
 
 __sign = []
-m = 60  # 默认60题
-n = 100  # 默认100以内
-
 f = open('calculation.txt', 'w')
 
 
-def __all():
+def __all(m=60,n=100):
     count = 0
     while count < m:
         num1 = random.randint(1, n)
@@ -27,43 +24,56 @@ def __all():
                 print('\n', file=f)
 
 
-def add():
+def add(m=60,n=100):
     global __sign
     __sign = ['+']
-    __all()
+    __all(m,n)
 
 
-def sub():
+def sub(m=60,n=100):
     global __sign
     __sign = ['-']
-    __all()
+    __all(m,n)
 
 
-def mul():
+def mul(m=60,n=100):
     global __sign
     __sign = ['×']
-    __all()
+    __all(m,n)
 
 
-def div():
+def div(m=60,n=100):
     global __sign
     __sign = ['÷']
-    __all()
+    __all(m,n)
 
 
-def add_sub():
+def add_sub(m=60,n=100):
     global __sign
     __sign = ['+', '-']
-    __all()
+    __all(m,n)
 
 
-def mul_div():
+def mul_div(m=60,n=100):
     global __sign
     __sign = ['×', '÷']
-    __all()
+    __all(m,n)
 
 
-def mix():
+def mix(m=60,n=100):
     global __sign
     __sign = ['+', '-', '×', '÷']
-    return __all()
+    return __all(m,n)
+
+# """100以内加减乘除"""
+# mix()
+#
+# """100以内加减"""
+# add_sub()
+# add()
+# sub()
+#
+# """10以内乘除"""
+# mul(n=10)
+# div(n=10)
+# f.close()

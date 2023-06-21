@@ -19,6 +19,6 @@ tokens=word_tokenize(raw)
 
 text=nltk.Text(tokens)
 
-url = "http://news.bbc.co.uk/2/hi/health/2284783.stm"
-html=request.urlopen(url).read().decode('utf8')
-html[:60]
+# url = "http://news.bbc.co.uk/2/hi/health/2284783.stm"
+# html=request.urlopen(url).read().decode('utf8')
+# print(html[:60])

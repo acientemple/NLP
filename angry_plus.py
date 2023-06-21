@@ -1,4 +1,4 @@
-"""随机出题，加减乘除"""
+"""随机出题，加减乘除，保存至calcu.txt文件"""
 f = open('calcu.txt', 'w')
 sign = []
 
@@ -33,16 +33,21 @@ class Mix():
         while count < self.m:
             num1 = self.random.randint(1, self.n)
             num2 = self.random.randint(1, self.n)
+            num3 = self.random.randint(1, self.n)
             s = self.random.choice(sign)
             if s == '÷' and num1 % num2 != 0:
                 continue
-            elif s == '-' and num1 < num2:
+            elif s== '÷' and num1 % (num2*num3) !=0:
+                continue
+            elif s == '-' and num1 - num2 < 0:
+                continue
+            elif s == '-' and num1-num2-num3 < 0:
                 continue
             else:
                 count += 1
-                print('{0:^4d}{1:^3s}{2:^4d}  = '.format(num1, s, num2), end='\t')
-                print('{0:^4d}{1:^3s}{2:^4d}  = '.format(num1, s, num2), end='\t', file=f)
-                if not count % 4:
+                print('{0:^4d}{1:^3s}{2:^4d}{3:^3s}{4:^4d}  = '.format(num1, s, num2 , s , num3), end='\t')
+                print('{0:^4d}{1:^3s}{2:^4d}{3:^3s}{4:^4d}  = '.format(num1, s, num2 , s , num3), end='\t\t', file=f)
+                if not count % 3:
                     print('\n')
                     print('\n', file=f)
 

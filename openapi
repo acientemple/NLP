@@ -1,0 +1,29 @@
+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
+org-U5x2jLZefdKAWCYg9bb5lHoZ
+
+
+import openai
+import os
+
+# 设置 API 密钥
+openai.api_key = os.environ["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"]
+
+# 模型 ID
+model_engine = "davinci"
+
+# 输入文本
+prompt = "你好，我想了解一下 ChatGPT 模型。"
+
+# 生成的最大长度（可选）
+max_tokens = 60
+
+# 调用 GPT-3
+response = openai.Completion.create(
+  engine=model_engine,
+  prompt=prompt,
+  max_tokens=max_tokens
+)
+
+# 输出生成的文本
+print(response.choices[0].text.strip())
+

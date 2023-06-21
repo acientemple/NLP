@@ -435,3 +435,12 @@ cfd2=nltk.ConditionalFreqDist([(tag,word) for (word,tag) in wsj])
 bigram=nltk.bigrams(wsj)
 precede=[w[0] for w in bigram if w[1][1]=='VBN']
 
+url='http://www.baidu.com'
+import urllib.request
+import urllib.parse
+request=urllib.request.urlopen(url)
+response=request.read()
+raw=response.decode('utf8')
+
+
+

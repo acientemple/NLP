@@ -1,4 +1,4 @@
-"""随机出题，加减乘除"""
+"""随机出题，加减乘除，保存至calcu.txt文件"""
 f = open('calcu.txt', 'w')
 sign = []
 
@@ -40,12 +40,11 @@ class Mix():
                 continue
             else:
                 count += 1
-                 print('{0:^4d}{1:^3s}{2:^4d}  = '.format(num1, s, num2), end='\t')
-                 print('{0:^4d}{1:^3s}{2:^4d}  = '.format(num1, s, num2), end='\t', file=f)
+                print('{0:^4d}{1:^3s}{2:^4d}  = '.format(num1, s, num2), end='\t')
+                print('{0:^4d}{1:^3s}{2:^4d}  = '.format(num1, s, num2), end='\t\t', file=f)
                 if not count % 4:
-                     print('\n')
-                     print('\n', file=f)
-
+                    print('\n')
+                    print('\n', file=f)
 
     def add(self):
         global sign
@@ -81,4 +80,3 @@ class Mix():
         global sign
         sign = ['+', '-', '×', '÷']
         self.__all()
-
